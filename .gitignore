@@ -1,0 +1,5 @@
+**/*.cpython-311..pyc
+.env
+**.ipynb_checkpoints
+**/_pycache__/
+__pycache__/helpers.cpython-311.pyc
