@@ -21,7 +21,7 @@ def initialize_page():
 def get_user_input(column):
     """Handle transcript input methods and return the transcript text"""
     
-    user_text = column.text_area(
+    user_text = st.text_area(
         "Please enter the topics you’re interested in:",
         height=100,
         placeholder="Type it here..."
@@ -92,17 +92,6 @@ def generate_response(user_text, selected_server, server_url):
         st.error(f"Error generating response: {str(e)}")
         return None
 
-# def display_video_info(user_text, response):
-#     """Display response"""
-#     if response:
-#         st.info(
-#             f"""
-#             **Response:**
-#             {response.output_text}
-#             """
-#         )
-#     else:
-#         st.error("No responses have been generated.")
 
 def main():
     # Initialize page layout
@@ -112,8 +101,7 @@ def main():
     user_text = get_user_input(main_column)
     
     # Get server selection
-    with main_column:
-        selected_server, server_url = helpers.create_mcp_server_dropdown()
+    selected_server, server_url = helpers.create_mcp_server_dropdown()
     
     # Generate response
     if st.button("Generate Response", key="generate_button"):
