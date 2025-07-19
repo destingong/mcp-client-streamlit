@@ -1,9 +1,7 @@
 import streamlit as st
 import os
 import io
-import boto3
 from dotenv import load_dotenv
-import helpers
 
 load_dotenv()
 HF_API_KEY = os.getenv('HF_API_KEY')
@@ -101,7 +99,7 @@ def main():
     user_text = get_user_input(main_column)
     
     # Get server selection
-    selected_server, server_url = helpers.create_mcp_server_dropdown()
+    selected_server, server_url = create_mcp_server_dropdown()
     
     # Generate response
     if st.button("Generate Response", key="generate_button"):
