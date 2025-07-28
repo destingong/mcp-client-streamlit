@@ -58,7 +58,7 @@ def create_mcp_server_dropdown():
 def generate_response(user_text, selected_server, server_url, OPENAI_API_KEY, HF_API_KEY):
     """Generate response using OpenAI client"""
     from openai import OpenAI
-
+    
     client = OpenAI(api_key=OPENAI_API_KEY)
     
     try:
@@ -115,7 +115,10 @@ def main():
     
     # Generate response
     if st.button("Generate Response", key="generate_button"):
-        if user_text:
+        if not OPENAI_API_KEY:
+            st.info("Please add your OpenAI API key in the sidebar to continue.")
+        
+        elif user_text:
             with st.spinner("Generating response..."):
                 response = generate_response(user_text, selected_server, server_url, OPENAI_API_KEY, HF_API_KEY)
 
